@@ -1,10 +1,4 @@
 import React from 'react';
-import {
-  Form,
-  Col,
-  Row,
-  Button,
-} from 'react-bootstrap';
 import { Field, reduxForm } from 'redux-form';
 
 const LoginForm = (props) => {
@@ -14,39 +8,41 @@ const LoginForm = (props) => {
     submitting,
   } = props;
   return (
-    <Form onSubmit={handleSubmit}>
-      <Form.Group as={Row} controlId="username">
-       <Form.Label column sm="2">
-         Username
-       </Form.Label>
-       <Col sm="10">
-         <Field
-           name="username"
-           component="input"
-           type="text"
-           placeholder="Username"
-         />
-       </Col>
-      </Form.Group>
-      <Form.Group as={Row} controlId="password">
-       <Form.Label column sm="2">
-         Password
-       </Form.Label>
-       <Col sm="10">
-         <Field
-           name="password"
-           component="input"
-           type="password"
-           placeholder="Password"
-         />
-       </Col>
-      </Form.Group>
-      <Form.Group as={Row} controlId="password">
-        <Button variant="primary" type="submit" disabled={pristine || submitting}>
-          Submit
-        </Button>
-      </Form.Group>
-    </Form>
+    <form onSubmit={handleSubmit} className="ui form">
+      <h4 className="ui dividing header">Contact Information</h4>
+      <div className="fields">
+        <div className="six wide field">
+          <label>Name</label>
+           <Field
+             name="username"
+             component="input"
+             type="text"
+             placeholder="Username"
+           />
+        </div>
+        <div className="six wide field">
+          <label>Password</label>
+           <Field
+             name="password"
+             component="input"
+             type="password"
+             placeholder="Password"
+           />
+        </div>
+      </div>
+      <div className="fields">
+        <div className="six wide field">
+          <button
+            variant="primary"
+            className="ui button positive"
+            type="submit"
+            disabled={pristine || submitting}
+          >
+            Login
+          </button>
+        </div>
+      </div>
+    </form>
   );
 };
 
